@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">
+        Formulario
+    </div>
+    <div class="card-body">
+        <form>
+            <label>Mail</label>
+            <input class="form-control" name="mail" [(ngModel)]="mail">
+            <br/>
+    
+            <label>Nombre</label>
+            <input class="form-control" name="nombre" [(ngModel)]="nombre">
+            <br/>
+    
+            <label>Clave</label>
+            <input class="form-control" name="clave" [(ngModel)]="clave">
+            <br/>
+    
+            <label>Perfil</label>
+            <select class="form-control" name="perfil" [(ngModel)]="perfil">
+                <option>Profesional</option>
+                <option>Normal</option>
+                <option>Free</option>
+            </select>
+            <br/>
+            <button type="button" (click)="login">Login</button>
+        </form>
+    </div>
+</div>
