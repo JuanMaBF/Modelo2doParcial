@@ -4,8 +4,8 @@ import { Http } from "@angular/http";
 @Injectable()
 export class HttpService {
 
-    private baseUrl = 'https://apitplav.000webhostapp.com/index.php/';
-    //private baseUrl = 'http://lvh.me/TP_LAB4_2C_2018/Backend/index.php/';
+    //private baseUrl = 'https://apitplav.000webhostapp.com/index.php/';
+    private baseUrl = 'http://lvh.me/Modelo2doParcial/Backend/index.php/';
 
     constructor(private http: Http) {
     }
@@ -14,9 +14,7 @@ export class HttpService {
         return this.http
             .get(this.baseUrl + url)
             .toPromise()
-            .then(resp => {
-                return resp;
-            })
+            .then(resp => resp.json())
             .catch(err => err);
     }
 

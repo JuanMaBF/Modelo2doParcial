@@ -7,15 +7,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpService } from './services/http.service';
 import { AuthService } from './services/auth.service';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 let router: Routes = [
-  //{ path:'', component: InicioComponent},
+  { path:'', component: InicioComponent},
   { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    InicioComponent,
     LoginComponent
   ],
   imports: [

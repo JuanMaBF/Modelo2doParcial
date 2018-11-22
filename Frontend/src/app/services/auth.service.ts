@@ -16,7 +16,7 @@ export class AuthService {
             .then(rta => rta.json());
     }
 
-    public registro(usuario: Usuario): Promise<any> {
+    /*public registro(usuario: Usuario): Promise<any> {
         return this.httpService
             .post('registro', usuario)
             .then(rta => rta.json());
@@ -25,7 +25,7 @@ export class AuthService {
     public logout() {
         localStorage.removeItem('parcial-usr');
         this.router.navigate(['login']);
-    }
+    }*/
 
     public getCurrentUser() {
         let lsValue = localStorage.getItem('parcial-usr');
