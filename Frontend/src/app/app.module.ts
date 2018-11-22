@@ -8,17 +8,21 @@ import { HttpModule } from '@angular/http';
 import { HttpService } from './services/http.service';
 import { AuthService } from './services/auth.service';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { AltaWsComponent } from './pages/altaws/altaws.component';
+import { ServidorService } from './services/servidor.service';
 
 let router: Routes = [
   { path:'', component: InicioComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'altaws', component: AltaWsComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
-    LoginComponent
+    LoginComponent,
+    AltaWsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ let router: Routes = [
   ],
   providers: [
     HttpService,
-    AuthService
+    AuthService,
+    ServidorService
   ],
   bootstrap: [AppComponent]
 })

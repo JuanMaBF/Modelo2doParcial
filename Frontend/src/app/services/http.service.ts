@@ -3,8 +3,7 @@ import { Http } from "@angular/http";
 
 @Injectable()
 export class HttpService {
-
-    //private baseUrl = 'https://apitplav.000webhostapp.com/index.php/';
+    
     private baseUrl = 'http://lvh.me/Modelo2doParcial/Backend/index.php/';
 
     constructor(private http: Http) {

@@ -34,7 +34,7 @@ class AuthService {
         return $loginResponse;
     }
 
-    public static function ValidateUserTo($token, $action) {
+    public static function ValidateUser($token) {
         return !JWTService::TokenIsExpired($token);
     }
 

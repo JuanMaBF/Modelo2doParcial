@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
     templateUrl: './inicio.component.html'
 }) export class InicioComponent {
 
-    public currentUserName: String;
+    public currentUser: any;
+    public userType: String;
 
     constructor(private authService: AuthService,
             private router: Router) {
-        this.currentUserName = this.authService.getCurrentUser().nombre;
+        this.currentUser = this.authService.getCurrentUser();
+        console.log(this.currentUser);
     }
-
-
 }

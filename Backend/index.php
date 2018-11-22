@@ -3,6 +3,7 @@
     require 'services/vendor/autoload.php';
     require 'services/auth.service.php';
     require 'services/pedido.service.php';
+    require 'services/servidor.service.php';
 
     $app = new Slim\App();
     
@@ -22,6 +23,21 @@
         $user = json_decode($request->getBody());
         $loginResponse = AuthService::Authenticate($user->nombre, $user->mail, $user->clave, $user->perfil);
         return json_encode($loginResponse);
+    });
+
+    $app->post('/altaWS', function($request, $response, $args) {
+        $servidores = json_decode($request->getBody());
+        if(AuthService::ValidateUser($servidores->token)) {
+            try {
+                foreach($servidores->servidores as $ser) { 
+                    Servidor::Alta($ser);
+                }
+                return 'ok';
+            } catch(Exception $e) {
+                return json_encode($e);
+            }
+        }
+        return 'TokenExpirado';
     });
 
     /*$app->post('/registro', function($request, $response, $args) {

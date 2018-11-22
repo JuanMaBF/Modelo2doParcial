@@ -1,0 +1,30 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col col-12">
+            <div class="card">
+                <div class="card-header">
+                    Alta de servicios web
+                </div>
+                <div class="card-body">
+                    <button [routerLink]="['/']">Volver</button>
+                    <form>
+                        <label>Nombre</label>
+                        <input class="form-control" name="nombre" [(ngModel)]="nombre">
+                        <br/>
+
+                        <label>Espacio</label>
+                        <input type="number" class="form-control" name="espacio" [(ngModel)]="espacio">
+                        <br/>
+                        <b>Precio</b>: {{precio}}
+                        <br/>
+                        <button (click)="load()">Cargar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,3 +1,9 @@
-<b>Nombre de usuario</b>: {{currentUserName}}
+<b>Nombre de usuario</b>: {{currentUser.nombre}}
 
 <br/>
+
+<div *ngIf="currentUser.perfil != 'free'">
+    <button class="btn btn-primary" [routerLink]="['/altaws']">Instancia de servidores</button>
+    <button class="btn btn-primary" >Base de datos</button>
+    <button class="btn btn-primary">Almacenamiento de archivos</button>
+</div>

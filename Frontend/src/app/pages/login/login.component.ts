@@ -49,17 +49,17 @@ import { Router } from '@angular/router';
     }
 
     public autocomplete(type: string) {
-        if('profesional') {
+        if(type == 'profesional') {
             this.nombre = 'fafa';
             this.mail = 'fafa@fafa.com';
             this.clave = 'fafa';
             this.perfil = 'profesional';
-        } else if('normal') {
+        } else if(type == 'normal') {
             this.nombre = 'normal';
             this.mail = 'normal@normal.com';
             this.clave = 'normal';
             this.perfil = 'normal';
-        } else if('free') {
+        } else if(type == 'free') {
             this.nombre = 'free';
             this.mail = 'free@free.com';
             this.clave = 'free';
