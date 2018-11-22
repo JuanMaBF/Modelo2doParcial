@@ -2,8 +2,7 @@
 
     require 'services/vendor/autoload.php';
     require 'services/auth.service.php';
-    require 'services/pedido.service.php';
-    require 'services/servidor.service.php';
+    require 'services/zapato.service.php';
 
     $app = new Slim\App();
     
@@ -21,16 +20,16 @@
 
     $app->post('/login', function($request, $response, $args) {
         $user = json_decode($request->getBody());
-        $loginResponse = AuthService::Authenticate($user->nombre, $user->mail, $user->clave, $user->perfil);
+        $loginResponse = AuthService::Authenticate($user->nombre, $user->mail, $user->clave, $user->tipo);
         return json_encode($loginResponse);
     });
 
-    $app->post('/altaWS', function($request, $response, $args) {
-        $servidores = json_decode($request->getBody());
-        if(AuthService::ValidateUser($servidores->token)) {
+    $app->post('/alta', function($request, $response, $args) {
+        $zapatos = json_decode($request->getBody());
+        if(AuthService::ValidateUser($zapatos->token)) {
             try {
-                foreach($servidores->servidores as $ser) { 
-                    Servidor::Alta($ser);
+                foreach($zapatos->zapatos as $zap) { 
+                    ZapatoService::Alta($zap);
                 }
                 return 'ok';
             } catch(Exception $e) {
@@ -38,66 +37,17 @@
             }
         }
         return 'TokenExpirado';
-    });
-
-    /*$app->post('/registro', function($request, $response, $args) {
-        $user = json_decode($request->getBody());
-        $result = UsersService::AddUser($user->user, $user->password, $user->type);
-        if($result == "ok") {
-            $loginResponse = AuthService::Authenticate($user->user, $user->password);
-            return json_encode($loginResponse);
-        } else {
-            return $result;
-        }
     });
 
     $app->get('/traerTodos', function($request, $response, $args) {
-        //$token = json_decode($request->getBody());
-        //if(AuthService::ValidateUserTo($token, 'test')) {
-            $pedidosArray = PedidoService::TraerTodos();
-            return json_encode($pedidosArray);
-        //}
-        //return 'TokenExpirado';
-    });
-
-    $app->post('/traerTodos', function($request, $response, $args) {
         $token = json_decode($request->getBody());
-        if(AuthService::ValidateUserTo($token, 'test')) {
-            $pedidosArray = PedidoService::TraerTodos();
-            return json_encode($pedidosArray);
+        if(AuthService::ValidateUser($token)) {
+            $zapatosArray = ZapatoService::TraerTodos();
+            return json_encode($zapatosArray);
         }
         return 'TokenExpirado';
     });
 
-    $app->post('/altaPedidos', function($request, $response, $args) {
-        $pedidos = json_decode($request->getBody());
-        if(AuthService::ValidateUserTo($pedidos->token, 'test')) {
-            try {
-                foreach($pedidos->pedidos as $ped) { 
-                    PedidoService::Alta($ped);
-                }
-                return 'ok';
-            } catch(Exception $e) {
-                return json_encode($e);
-            }
-        }
-        return 'TokenExpirado';
-    });
-
-    $app->post('/actualizarPedidos', function($request, $response, $args) {
-        $pedidos = json_decode($request->getBody());
-        if(AuthService::ValidateUserTo($pedidos->token, 'test')) {
-            try {
-                foreach($pedidos->pedidos as $ped) { 
-                    PedidoService::Update($ped);
-                }
-                return 'ok';
-            } catch(Exception $e) {
-                return json_encode($e);
-            }
-        }
-        return 'TokenExpirado';
-    });*/
 
     $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function($req, $res) {
         $handler = $this->notFoundHandler; 

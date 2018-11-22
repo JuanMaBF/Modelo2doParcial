@@ -4,13 +4,13 @@ class Usuario {
     public $nombre;
     public $mail;
     public $clave;
-    public $perfil;
+    public $tipo;
 
-    function __construct($nombre, $mail, $clave, $perfil) {
+    function __construct($nombre, $mail, $clave, $tipo) {
         $this->nombre = $nombre;
         $this->mail = $mail;
         $this->clave = $clave;
-        $this->perfil = $perfil;
+        $this->tipo = $tipo;
     }
 }
 

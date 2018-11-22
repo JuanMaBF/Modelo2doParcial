@@ -16,21 +16,21 @@
             <input type="password" class="form-control" name="clave" [(ngModel)]="clave">
             <br/>
     
-            <label>Perfil</label>
-            <select class="form-control" name="perfil" [(ngModel)]="perfil">
-                <option>profesional</option>
-                <option>normal</option>
-                <option>free</option>
+            <label>Tipo</label>
+            <select class="form-control" name="tipo" [(ngModel)]="tipo">
+                <option>cliente</option>
+                <option>vendedor</option>
+                <option>administrador</option>
             </select>
             <br/>
             <span class="text-warning">
                 {{errorMessage}}
             </span>
             <br/>
-            <button type="button" (click)="login()">Login</button>
-            <button type="button" (click)="autocomplete('profesional')">profesional</button>
-            <button type="button" (click)="autocomplete('normal')">normal</button>
-            <button type="button" (click)="autocomplete('free')">free</button>
+            <button type="button" (click)="login()">Login</button> <br/>
+            <button type="button" (click)="autocomplete('vendedor')">vendedor</button>
+            <button type="button" (click)="autocomplete('cliente')">cliente</button>
+            <button type="button" (click)="autocomplete('administrador')">administrador</button>
         </form>
     </div>
 </div>

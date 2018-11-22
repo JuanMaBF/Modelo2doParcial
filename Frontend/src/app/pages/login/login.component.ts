@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
     public nombre: String;
     public mail: String;
     public clave: String;
-    public perfil: String;
+    public tipo: String;
     public errorMessage: String;
 
     constructor(private authService: AuthService,
@@ -19,8 +19,8 @@ import { Router } from '@angular/router';
     }
 
     public login(): void {
-        if(this.mail && this.nombre && this.clave && this.perfil) {
-            let usuario = new Usuario(this.nombre, this.mail, this.clave, this.perfil);
+        if(this.mail && this.nombre && this.clave && this.tipo) {
+            let usuario = new Usuario(this.nombre, this.mail, this.clave, this.tipo);
             this.authService
                 .login(usuario) 
                 .then(rta => {
@@ -33,7 +33,6 @@ import { Router } from '@angular/router';
 
     public handleRta(rta: any) {
         let error = rta.error;
-        console.log(rta);
         if(error == 'nombreError') {
             this.errorMessage = "Nombre incorrecto";
         } else if(error == 'passError') {
@@ -49,21 +48,21 @@ import { Router } from '@angular/router';
     }
 
     public autocomplete(type: string) {
-        if(type == 'profesional') {
-            this.nombre = 'fafa';
-            this.mail = 'fafa@fafa.com';
-            this.clave = 'fafa';
-            this.perfil = 'profesional';
-        } else if(type == 'normal') {
-            this.nombre = 'normal';
-            this.mail = 'normal@normal.com';
-            this.clave = 'normal';
-            this.perfil = 'normal';
-        } else if(type == 'free') {
-            this.nombre = 'free';
-            this.mail = 'free@free.com';
-            this.clave = 'free';
-            this.perfil = 'free';
+        if(type == 'cliente') {
+            this.nombre = 'cliente';
+            this.mail = 'cliente@cliente.com';
+            this.clave = 'cliente';
+            this.tipo = 'cliente';
+        } else if(type == 'vendedor') {
+            this.nombre = 'vendedor';
+            this.mail = 'vendedor@vendedor.com';
+            this.clave = 'vendedor';
+            this.tipo = 'vendedor';
+        } else if(type == 'administrador') {
+            this.nombre = 'admin';
+            this.mail = 'admin@admin.com';
+            this.clave = 'admin';
+            this.tipo = 'administrador';
         }  
     }
 

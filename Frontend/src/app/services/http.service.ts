@@ -22,6 +22,7 @@ export class HttpService {
             .post(this.baseUrl + url, JSON.stringify(data))
             .toPromise()
             .then(resp => {
+                console.log(resp);
                 return resp;
             })
             .catch(err => err);

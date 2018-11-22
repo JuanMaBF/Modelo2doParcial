@@ -13,6 +13,6 @@ import { Router } from '@angular/router';
     constructor(private authService: AuthService,
             private router: Router) {
         this.currentUser = this.authService.getCurrentUser();
-        console.log(this.currentUser);
     }
+
 }

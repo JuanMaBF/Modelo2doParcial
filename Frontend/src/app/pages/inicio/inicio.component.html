@@ -2,8 +2,17 @@
 
 <br/>
 
-<div *ngIf="currentUser.perfil != 'free'">
-    <button class="btn btn-primary" [routerLink]="['/altaws']">Instancia de servidores</button>
-    <button class="btn btn-primary" >Base de datos</button>
-    <button class="btn btn-primary">Almacenamiento de archivos</button>
-</div>
+<button *ngIf="currentUser.tipo == 'administrador'" [routerLink]="['/estadisticas']" class="btn btn-primary">
+    Ver estadisticas
+</button>
+<button class="btn btn-primary" >
+    Hacer compras
+</button>
+<button *ngIf="currentUser.tipo != 'cliente'" [routerLink]="['/alta']" class="btn btn-primary">
+    Cargar productos
+</button>
+
+<br>
+<br>
+
+<button class="btn btn-danger" [routerLink]="['/login']">Cerrar sesion</button>

@@ -8,13 +8,17 @@ import { HttpModule } from '@angular/http';
 import { HttpService } from './services/http.service';
 import { AuthService } from './services/auth.service';
 import { InicioComponent } from './pages/inicio/inicio.component';
-import { AltaWsComponent } from './pages/altaws/altaws.component';
-import { ServidorService } from './services/servidor.service';
+import { AltaComponent } from './pages/alta/alta.component';
+import { ZapatoService } from './services/zapato.service';
+import { MostrarComponent } from './pages/mostrar/mostrar.component';
+import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
+import { AumentoPipe } from './pipes/mayuscula.pipe';
 
 let router: Routes = [
   { path:'', component: InicioComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'altaws', component: AltaWsComponent}
+  { path: 'alta', component: AltaComponent},
+  { path: 'estadisticas', component: EstadisticasComponent}
 ];
 
 @NgModule({
@@ -22,7 +26,10 @@ let router: Routes = [
     AppComponent,
     InicioComponent,
     LoginComponent,
-    AltaWsComponent
+    AltaComponent,
+    MostrarComponent,
+    EstadisticasComponent,
+    AumentoPipe
   ],
   imports: [
     BrowserModule,
@@ -30,10 +37,11 @@ let router: Routes = [
     FormsModule,
     HttpModule
   ],
+  exports: [MostrarComponent],
   providers: [
     HttpService,
     AuthService,
-    ServidorService
+    ZapatoService
   ],
   bootstrap: [AppComponent]
 })

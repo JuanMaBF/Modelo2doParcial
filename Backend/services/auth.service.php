@@ -6,7 +6,7 @@ require 'jwt.service.php';
 
 class AuthService {
 
-    public static function Authenticate($nombre, $mail, $clave, $perfil) {
+    public static function Authenticate($nombre, $mail, $clave, $tipo) {
         $loginResponse = new LoginResponse();
         $foundUser = UsersService::TraerPorUsuario($nombre);
         if($foundUser != "NO-EXISTE") {
@@ -17,15 +17,15 @@ class AuthService {
             } else if($foundUser->mail != $mail) { 
                 $loginResponse->result = "error";
                 $loginResponse->error = "mailError";    
-            } else if($foundUser->perfil != $perfil) { 
+            } else if($foundUser->tipo != $tipo) { 
                 $loginResponse->result = "error";
-                $loginResponse->error = "perfilError";    
+                $loginResponse->error = "tipoError";    
             } else {
                 $loginResponse->error = "";
                 $loginResponse->result = "ok";
                 $loginResponse->token = JWTService::CreateToken($foundUser);
                 $loginResponse->nombre = $foundUser->nombre;
-                $loginResponse->perfil = $foundUser->perfil;
+                $loginResponse->tipo = $foundUser->tipo;
             } 
         } else {
             $loginResponse->result = "error";

@@ -1,0 +1,63 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col col-12">
+            <div class="card">
+                <div class="card-header">
+                    Alta de zapatos
+                </div>
+                <div class="card-body">
+                    <button [routerLink]="['/']">Volver</button>
+                    <form>
+                        <label>Codigo de modelo</label>
+                        <input class="form-control" name="codModelo" [(ngModel)]="codModelo">
+                        <br/>
+
+                        <label>Nombre</label>
+                        <input class="form-control" name="nombre" [(ngModel)]="nombre">
+                        <br/>
+
+                        <label>Fecha de ingreso</label>
+                        <input type="date" class="form-control" name="fechaIngreso" [(ngModel)]="fechaIngreso">
+                        <br/>
+
+                        <label>Local de Venta</label>
+                        <select class="form-control" name="localVenta" [(ngModel)]="localVenta">
+                            <option>local-1</option>
+                            <option>local-2</option>
+                        </select>
+                        <br/>
+
+                        <label>Precio de costo</label>
+                        <input type="number" class="form-control" name="precioCosto" [(ngModel)]="precioCosto">
+                        <br/>
+
+                        <label>Genero</label>
+                        <select class="form-control" name="genero" [(ngModel)]="genero">
+                            <option>Hombre</option>
+                            <option>Mujer</option>
+                            <option>Unisex</option>
+                        </select>
+                        <br/>
+
+                        <button (click)="load()">Cargar</button>
+                    </form>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Lista de zapatos</h3>
+                </div>
+                <div class="card-body">
+                    <mostrar [zapatos]="zapatos"></mostrar>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
