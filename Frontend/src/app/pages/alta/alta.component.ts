@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
 import { ZapatoService } from 'src/app/services/zapato.service';
 import { Zapato } from 'src/app/model/zapato';
 

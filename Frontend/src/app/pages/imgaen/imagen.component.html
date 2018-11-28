@@ -1,0 +1,16 @@
+<button [routerLink]="['/']">Volver</button>
+<br/>
+<br/>
+
+<label>Codigo</label>
+<input name="codModelo" [(ngModel)]="codModelo">
+<br/>
+
+<label>Subir foto de la mesa</label>
+<input type="file" (change)="uploadFile($event)" accept=".png,.jpg">
+
+<br/>
+<img style="width: 30px" [hidden]="!showSpinner" src="https://static.centro.org.uk/XnwmAssets/img/spinner.gif"/>
+<img style="width: 100%" [hidden]="!fileName" [src]="fileLink">
+<button style="width: 100%" [hidden]="!fileName" type="button" (click)="deleteImg()" class="btn btn-sm btn-danger">X</button>
+<br [hidden]="!fileName"/>

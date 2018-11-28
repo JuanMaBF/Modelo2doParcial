@@ -13,12 +13,18 @@ import { ZapatoService } from './services/zapato.service';
 import { MostrarComponent } from './pages/mostrar/mostrar.component';
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 import { AumentoPipe } from './pipes/mayuscula.pipe';
+import { GenderDirective } from './directives/gender.directive';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireModule } from '@angular/fire';
+import { ImagenComponent } from './pages/imgaen/imagen.component';
+import { MostrarCompComponent } from './pages/mostrarComp/mostrarComp.component';
 
 let router: Routes = [
-  { path:'', component: InicioComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'alta', component: AltaComponent},
-  { path: 'estadisticas', component: EstadisticasComponent}
+  { path:'', component: InicioComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'alta', component: AltaComponent },
+  { path: 'estadisticas', component: EstadisticasComponent },
+  { path: 'imagen', component: ImagenComponent },
 ];
 
 @NgModule({
@@ -29,13 +35,25 @@ let router: Routes = [
     AltaComponent,
     MostrarComponent,
     EstadisticasComponent,
-    AumentoPipe
+    AumentoPipe,
+    GenderDirective,
+    ImagenComponent,
+    MostrarCompComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(router),
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyDYUcDad9Eb6oqRo9svKEtvyRTWcxHzXZM",
+      authDomain: "tplab4-3498e.firebaseapp.com",
+      databaseURL: "https://tplab4-3498e.firebaseio.com",
+      projectId: "tplab4-3498e",
+      storageBucket: "tplab4-3498e.appspot.com",
+      messagingSenderId: "447742251777"
+    }),
+    AngularFireStorageModule
   ],
   exports: [MostrarComponent],
   providers: [

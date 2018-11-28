@@ -15,4 +15,11 @@
 <br>
 <br>
 
+<button *ngIf="currentUser.tipo == 'administrador'" [routerLink]="['/imagen']" class="btn btn-primary">
+    Cargar imagen
+</button>
+
+<br>
+<br>
+
 <button class="btn btn-danger" [routerLink]="['/login']">Cerrar sesion</button>
